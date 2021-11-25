@@ -29,12 +29,6 @@
     <!-- Fixed or fluid width inputs -->
     <property name="textAreaSize" display-name-key="Text area size" description-key="Make the height of a textarea proportional to the amount of text you expect users to enter." of-type="SingleLine.Text" usage="input" required="false"/>
 
-    <!-- Input type -->   
-    <property name="inputType" display-name-key="Input type" description-key="Choose input type based on the information required, for example, if you’re asking the user to enter a whole number and you want to bring up the numeric keypad on a mobile device. If you’re asking the user to enter a number that might include decimal places, leave this option unselected to default to text input." of-type="Enum" usage="input" required="false">
-      <value name="wholeNumber" display-name-key="Whole number" description-key="Whole number input only and brings up the numeric input">1</value>
-      <value name="mustBeANumber" display-name-key="Must be a number" description-key="Choose this option if the input must be a number, either a whole number or a decimal, but you do not need the numeric input as with whole number">2</value>
-    </property> 
-
     <!-- Maximum or minimun input character length -->
     <property name="maxInputLength" display-name-key="Max input length" description-key="The maximum length of characters allowed. If a fixed width option is selected for the input field, then that value is used as the maximum length" of-type="SingleLine.Text" usage="input" required="false"/>
     <property name="minInputLength" display-name-key="Min input length" description-key="The minimum length of characters allowed." of-type="SingleLine.Text" usage="input" required="false"/>
