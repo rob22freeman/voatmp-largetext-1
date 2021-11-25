@@ -5,7 +5,7 @@
 	import { parse } from "path";
 	import { Context } from "vm";
 
-	export class TextInput implements ComponentFramework.StandardControl<IInputs, IOutputs> {
+	export class largeTextArea implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 	
 		// Value of the column is stored and used inside the component
 		private _value: string | null;
@@ -153,7 +153,7 @@
 			const templatePath = "node_modules/govuk-frontend/govuk/components/";
 			const env = Nunjucks.configure(runOnServer + templatePath);
 			
-			const renderedNunjucksTemplate = env.render('/input/template.njk',{params:{
+			const renderedNunjucksTemplate = env.render('/textarea/template.njk',{params:{
 				label: this._disablePageHeading,
 				  prefix: {
 					text: this._prefix
@@ -1045,7 +1045,7 @@
 			// no-op: method not leveraged by this example custom control
 		}
 
-		private registerPCFComponent(currentInstance:TextInput) : void {
+		private registerPCFComponent(currentInstance:largeTextArea) : void {
 			
 			let globalScope = (window as any);
 			
