@@ -60,10 +60,6 @@
 		private _maxInputLength: string | undefined;
 		private _minInputLength: string | undefined;
 
-		// Configuration for lowest or highest bounds
-		private _lowest: string | undefined;
-		private _highest: string | undefined;
-
 		// Configuration for special characters not allowed
 		private _onlyAllowStandardChars: boolean;
 		private _specifyCharsNotAllowed: string | undefined;
@@ -302,9 +298,6 @@
 			isInputValid &&= this.handleIfInputIsTooShort(fieldIdentifier);
 			isInputValid &&= this.handleIfSpecifiedCharactersAreNotAllowed(fieldIdentifier);
 			isInputValid &&= this.handleIfOnlyStandardCharactersAreAllowed(fieldIdentifier);
-			isInputValid &&= this.handleIfInputMustBeBetweenTwoNumbers(fieldIdentifier);
-			isInputValid &&= this.handleIfInputIsTooLow(fieldIdentifier);
-			isInputValid &&= this.handleIfInputIsTooHigh(fieldIdentifier);
 
 			return isInputValid;
 		}
@@ -337,6 +330,7 @@
 		}
 
 		/**
+		 * UTILITY METHOD:
 		 * Capitalises first letter of error message for showError output
 		 * @param string {string} Error message to have first letter capitalised.
 		 * @returns {string} Error message with first letter capitalised.
@@ -347,6 +341,7 @@
 		}	
 
 		/**
+		 * UTILITY METHOD:
 		 * Converts first letter of error message for showError output to lowercase (acting as a fail safe so the correct format is always displayed)
 		 * @param string {string} Error message to have first letter converted to lowercase.
 		 * @returns {string} Error message with first letter converted to lowercase.
@@ -591,109 +586,6 @@
 			}
 
 			return !mustOnlyIncludeCharsAllowed;
-		 }
-
-		/**
-		 * ERROR VALIDATION: 
-		 * Handle if the input must be between 2 numbers. Say ‘[whatever it is] must be between [lowest] and [highest]’.
-		 * For example, ‘Hours worked a week must be between 16 and 99’. Set the lower and higher bounds via the Control Manifest.
-		 * @param fieldIdentifier {string} Indentify the name of the field to display in the error messages
-		 * @returns {boolean} Return true if nothing has been entered, otherwise false;
-		 * @private
-		 */
-		 private handleIfInputMustBeBetweenTwoNumbers (fieldIdentifier: string): boolean {
-			
-			this._lowest = (this._context.parameters.lowest.raw == undefined) ? undefined : this._context.parameters.lowest.raw;
-			this._highest = (this._context.parameters.highest.raw == undefined) ? undefined : this._context.parameters.highest.raw;
-			
-			let lowest: any = this._lowest;
-			let highest: any = this._highest;
-			
-			let inputText: any = this._textInput.value;
-			
-			// Check whether a value has been provided for both the lower and higher bounds, return true otherwise false.
-			let useMustBeBetween = (lowest != undefined && highest != undefined) ? true : false;
-
-			// If a value has been provided for both the lower and higher bounds, then check that input falls between those values.
-			let mustBeBetween = (useMustBeBetween) ? (((parseFloat(inputText) >= parseFloat(lowest)) && (parseFloat(inputText) <= parseFloat(highest))) ? false : true) : false;
-
-			if (mustBeBetween) {
-
-				this.ShowError(this.firstCharUpperCase(fieldIdentifier) + " must be between " + lowest + " and " + highest);
-				this._errorFocusId = this._textInputId;
-			}
-
-			return !mustBeBetween;
-		 }
-
-		/**
-		 * ERROR VALIDATION: 
-		 * Handle if the number is too low. Say ‘[whatever it is] must be [lowest] or more’.
-		 * For example, ‘Hours worked a week must be 16 or more’. Set the lower bound via the Control Manifest.
-		 * @param fieldIdentifier {string} Indentify the name of the field to display in the error messages
-		 * @returns {boolean} Return true if nothing has been entered, otherwise false;
-		 * @private
-		 */
-		 private handleIfInputIsTooLow (fieldIdentifier: string): boolean {
-
-			this._lowest = (this._context.parameters.lowest.raw == undefined) ? undefined : this._context.parameters.lowest.raw;
-			this._highest = (this._context.parameters.highest.raw == undefined) ? undefined : this._context.parameters.highest.raw;
-			
-			let lowest: any = this._lowest;
-			let highest: any = this._highest;
-
-			// Check whether a value has been provided for both the lower and higher bounds, return true otherwise false.
-			let useMustBeBetween = (lowest != undefined && highest != undefined) ? true : false;
-			
-			if (!useMustBeBetween) {
-				return true;
-			}
-
-			let inputText = this._textInput.value;
-			let inputIsTooLow = (!useMustBeBetween) ? ((lowest != undefined) ? (parseFloat(inputText) <= parseFloat(lowest)) : true) : false;
-			
-			if (inputIsTooLow) {
-				
-				this.ShowError(this.firstCharUpperCase(fieldIdentifier) + " must be " + lowest + " or more");
-				this._errorFocusId = this._textInputId;
-			}
-
-			return !inputIsTooLow;
-		 }
-
-		/**
-		 * ERROR VALIDATION: 
-		 * Handle if the number is too high. Say ‘[whatever it is] must be [highest] or fewer'.
-		 * For example, ‘Hours worked a week must be 99 or fewer'. Set the upper bound via the Control Manifest.
-		 * @param fieldIdentifier {string} Indentify the name of the field to display in the error messages
-		 * @returns {boolean} Return true if nothing has been entered, otherwise false;
-		 * @private
-		 */
-		 private handleIfInputIsTooHigh (fieldIdentifier: string): boolean {
-			
-			this._lowest = (this._context.parameters.lowest.raw == undefined) ? undefined : this._context.parameters.lowest.raw;
-			this._highest = (this._context.parameters.highest.raw == undefined) ? undefined : this._context.parameters.highest.raw;
-			
-			let lowest: any = this._lowest;			
-			let highest: any = this._highest;
-
-			// Check whether a value has been provided for both the lower and higher bounds, return true otherwise false.
-			let useMustBeBetween = (lowest != undefined && highest != undefined) ? true : false;
-			
-			if (!useMustBeBetween) {
-				return true;
-			}
-
-			let inputText = this._textInput.value;
-			let inputIsTooHigh = (!useMustBeBetween) ? ((highest != undefined) ? (parseFloat(inputText) >= parseFloat(highest)) : true) : false;
-
-			if (inputIsTooHigh) {
-				
-				this.ShowError(this.firstCharUpperCase(fieldIdentifier) + " must be " + highest + " or fewer");
-				this._errorFocusId = this._textInputId;
-			}
-
-			return !inputIsTooHigh;
 		 }
 
 		/**
