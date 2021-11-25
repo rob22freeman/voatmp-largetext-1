@@ -48,32 +48,15 @@
       <value name="mustBeANumber" display-name-key="Must be a number" description-key="Choose this option if the input must be a number, either a whole number or a decimal, but you do not need the numeric input as with whole number">2</value>
     </property> 
 
-    <!-- Prefix -->
-    <property name="prefix" display-name-key="Prefix" description-key="Enter the prefix required." of-type="SingleLine.Text" usage="input" required="false"/>
-    <!-- Suffix -->
-    <property name="suffix" display-name-key="Suffix" description-key="Enter the suffix required." of-type="SingleLine.Text" usage="input" required="false"/>
-
     <!-- Maximum or minimun input character length -->
     <property name="maxInputLength" display-name-key="Max input length" description-key="The maximum length of characters allowed. If a fixed width option is selected for the input field, then that value is used as the maximum length" of-type="SingleLine.Text" usage="input" required="false"/>
     <property name="minInputLength" display-name-key="Min input length" description-key="The minimum length of characters allowed." of-type="SingleLine.Text" usage="input" required="false"/>
     
-    <!-- Lowest or highest bounds from number input -->
-    <property name="lowest" display-name-key="Lowest" description-key="Specify the lowest bound of the number input." of-type="SingleLine.Text" usage="input" required="false"/>
-    <property name="highest" display-name-key="Highest" description-key="Specify the highest bound of the number input." of-type="SingleLine.Text" usage="input" required="false"/>
-
     <!-- Special characters -->
     <property name="specialCharacters" display-name-key="Special characters" description-key="Only allow letters a to z, hyphens, spaces and apostrophes, or specify which characters are not allowed." of-type="Enum" usage="input" required="false">
       <value name="onlyAllowStandardChars" display-name-key="Only allow standard characters" description-key="Only allow letters a to z, hyphens, spaces and apostrophes.">1</value>
     </property>
     <property name="specifyCharsNotAllowed" display-name-key="Specify characters not allowed" description-key="Specify characters that are not allowed, separated by commas, for example: !, £, @" of-type="SingleLine.Text" usage="input" required="false"/>
-    
-    <!-- Spellcheck -->
-    <property name="disableSpellcheck" display-name-key="Disable spellcheck" description-key="Sometimes, browsers will spellcheck the information a user puts into a text input. If a user enters something which is recognised as a spelling error, sighted users will see a red line under the word. If you are asking users for information which is not appropriate to spellcheck, like a reference number, name, email address or National Insurance number, disable the spellcheck." of-type="Enum" usage="input" required="false">
-      <value name="disableSpellcheck" display-name-key="Disable spellcheck" description-key="Disable Spellcheck">1</value>
-    </property>
-
-    <!-- Autocomplete -->
-    <property name="autocomplete" display-name-key="Autocomplete" description-key="Use the autocomplete attribute on text inputs to help users complete forms more quickly. Taking guidance from https://www.w3.org/TR/WCAG21/#input-purposes enter a value for autocomplete input purpose." of-type="SingleLine.Text" usage="input" required="false"/>
 
     <!-- 
       Property node's of-type attribute can be of-type-group attribute. 
