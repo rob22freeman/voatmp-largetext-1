@@ -154,24 +154,13 @@
 			const env = Nunjucks.configure(runOnServer + templatePath);
 			
 			const renderedNunjucksTemplate = env.render('/textarea/template.njk',{params:{
+				name: this._uniqueIdentifier,
+				id: this._uniqueIdentifier,
+				rows: "8",
 				label: this._disablePageHeading,
-				  prefix: {
-					text: this._prefix
-				  },
-				  suffix: {
-					text: this._suffix
-				  },
-				  classes: this._fixedAndFluidWidthInputsClass,
-				  hint: {
-					text: this._hint
-				  },
-				  id: this._uniqueIdentifier,
-				  name: this._uniqueIdentifier,
-				  inputmode: this._inputmode,
-				  pattern: this._pattern,
-				  spellcheck: this._spellcheck,
-				  autocomplete: this._autocomplete
-				} });
+				hint: {
+				  text: this._hint
+				} }});
 			
 			this._container = document.createElement("div");
 			this._container.innerHTML =
