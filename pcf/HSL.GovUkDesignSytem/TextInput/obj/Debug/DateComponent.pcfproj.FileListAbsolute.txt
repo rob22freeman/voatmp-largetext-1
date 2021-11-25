@@ -1,0 +1,12 @@
+C:\Users\mlund\source\repos\pcf\HSL.GovUkDesignSytem\DateComponent\obj\Debug\DateComponent.pcfprojAssemblyReference.cache
+C:\Users\mlund\source\repos\pcf\HSL.GovUkDesignSytem\DateComponent\obj\Debug\DateComponent.pcfproj.CoreCompileInputs.cache
+C:\Users\rfreeman\Downloads\HSL.GovUkDesignSytem\DateComponent\obj\Debug\DateComponent.pcfproj.AssemblyReference.cache
+C:\Users\rfreeman\Downloads\HSL.GovUkDesignSytem\DateComponent\obj\Debug\DateComponent.pcfproj.CoreCompileInputs.cache
+C:\Users\rfreeman\source\repos\HMRC\voatmp\pcf\HSL.GovUkDesignSytem\DateComponent\obj\Debug\DateComponent.pcfproj.AssemblyReference.cache
+C:\Users\rfreeman\source\repos\HMRC\voatmp\pcf\HSL.GovUkDesignSytem\DateComponent\obj\Debug\DateComponent.pcfproj.CoreCompileInputs.cache
+C:\Users\rfreeman\source\repos\HMRC\voatmp-latest\pcf\HSL.GovUkDesignSytem\DateComponent\obj\Debug\DateComponent.pcfproj.AssemblyReference.cache
+C:\Users\rfreeman\source\repos\HMRC\voatmp-latest\pcf\HSL.GovUkDesignSytem\DateComponent\obj\Debug\DateComponent.pcfproj.CoreCompileInputs.cache
+C:\Users\rfreeman\source\repos\HMRC\voatmp-radio\pcf\HSL.GovUkDesignSytem\RadioList\obj\Debug\DateComponent.pcfproj.AssemblyReference.cache
+C:\Users\rfreeman\source\repos\HMRC\voatmp-radio\pcf\HSL.GovUkDesignSytem\RadioList\obj\Debug\DateComponent.pcfproj.CoreCompileInputs.cache
+C:\Users\rfreeman\source\repos\voatmp-textinput-1\pcf\HSL.GovUkDesignSytem\TextInput\obj\Debug\DateComponent.pcfproj.AssemblyReference.cache
+C:\Users\rfreeman\source\repos\voatmp-textinput-1\pcf\HSL.GovUkDesignSytem\TextInput\obj\Debug\DateComponent.pcfproj.CoreCompileInputs.cache

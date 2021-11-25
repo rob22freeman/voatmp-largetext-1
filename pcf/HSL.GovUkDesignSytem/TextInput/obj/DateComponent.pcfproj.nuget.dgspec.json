@@ -1,0 +1,50 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\rfreeman\\source\\repos\\voatmp-textinput-1\\pcf\\HSL.GovUkDesignSytem\\TextInput\\DateComponent.pcfproj": {}
+  },
+  "projects": {
+    "C:\\Users\\rfreeman\\source\\repos\\voatmp-textinput-1\\pcf\\HSL.GovUkDesignSytem\\TextInput\\DateComponent.pcfproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\rfreeman\\source\\repos\\voatmp-textinput-1\\pcf\\HSL.GovUkDesignSytem\\TextInput\\DateComponent.pcfproj",
+        "projectName": "DateComponent",
+        "projectPath": "C:\\Users\\rfreeman\\source\\repos\\voatmp-textinput-1\\pcf\\HSL.GovUkDesignSytem\\TextInput\\DateComponent.pcfproj",
+        "packagesPath": "C:\\Users\\rfreeman\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\rfreeman\\source\\repos\\voatmp-textinput-1\\pcf\\HSL.GovUkDesignSytem\\TextInput\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\rfreeman\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net462"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net462": {
+            "targetAlias": "net462",
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net462": {
+          "targetAlias": "net462",
+          "dependencies": {
+            "Microsoft.NETFramework.ReferenceAssemblies": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "Microsoft.PowerApps.MSBuild.Pcf": {
+              "target": "Package",
+              "version": "[1.*, )"
+            }
+          }
+        }
+      }
+    }
+  }
+}

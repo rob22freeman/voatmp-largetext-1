@@ -1,0 +1,1 @@
+http-server.cmd %~dp0 --cors

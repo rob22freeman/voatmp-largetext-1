@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "start-with-common",
+			"problemMatcher": [],
+			"label": "npm: start-with-common",
+			"detail": "start ..\\..\\Common\\HostCommon.cmd & pcf-scripts start"
+		}
+	]
+}

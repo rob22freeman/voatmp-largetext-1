@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="HSL.GovUkDesignSystem" constructor="TextInput" version="0.0.1" display-name-key="HSL GUDS Text Input" description-key="Hitachi Solutions PCF implementation of GOV.UK Design System Text Input." control-type="standard" >
+    <!--external-service-usage node declares whether this 3rd party PCF control is using external service or not, if yes, this control will be considered as premium and please also add the external domain it is using.
+    If it is not using any external service, please set the enabled="false" and DO NOT add any domain below. The "enabled" will be false by default.
+    Example1:
+      <external-service-usage enabled="true">
+        <domain>www.Microsoft.com</domain>
+      </external-service-usage>
+    Example2:
+      <external-service-usage enabled="false">
+      </external-service-usage>
+    -->
+    <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
+    <property name="textInput" display-name-key="textInput" description-key="textInput" of-type="SingleLine.Text" usage="bound" required="true"/>
+    
+    <property name="title" display-name-key="Title" description-key="What information do you intend to capture?" of-type="SingleLine.Text" usage="input" required="true"/>
+    <property name="fieldIdentifierErrorMessage" display-name-key="Field Error Message" description-key="Provide error message specific text (eg [whatever it is])" of-type="SingleLine.Text" usage="input" required="true"/>
+    <property name="hint" display-name-key="Hint" description-key="Use hint text for help that’s relevant to the majority of users, like how their information will be used, or where to find it." of-type="SingleLine.Text" usage="input" required="false"/>
+    
+    <!-- Unique identifier --> 
+    <property name="uniqueIdentifier" display-name-key="Unique Identifier" description-key="Unique idenfier for this fields control on form. Unless same field is present more than once on the form, use the field logical name. Only use lowercase letters and underscores." of-type="SingleLine.Text" usage="input" required="true" />
+
+    <!-- Disable page heading -->
+    <property name="disablePageHeading" display-name-key="Disable Page Heading" description-key="Select this option if you are asking more than one question on the page." of-type="Enum" usage="input" required="false">
+      <value name="disablePageHeading" display-name-key="Disable page heading" description-key="Select this option if you are asking more than one question on the page.">1</value>
+    </property>
+
+    <!-- Fixed or fluid width inputs -->
+    <property name="fixedAndFluidWidthInputs" display-name-key="Fixed and fluid width inputs" description-key="Use fixed width inputs for content that has a specific, known length, or use the width override classes to reduce the width of an input in relation to its parent container, for example, to two-thirds. Fluid width inputs will resize with the viewport." of-type="Enum" usage="input" required="false">
+      <value name="characterWidth2" display-name-key="2 character width" description-key="2 character width">1</value>
+      <value name="characterWidth3" display-name-key="3 character width" description-key="3 character width">2</value>
+      <value name="characterWidth4" display-name-key="4 character width" description-key="4 character width">3</value>
+      <value name="characterWidth5" display-name-key="5 character width" description-key="5 character width">4</value>
+      <value name="characterWidth10" display-name-key="10 character width" description-key="10 character width">5</value>
+      <value name="characterWidth20" display-name-key="20 character width" description-key="20 character width">6</value>
+      <value name="fullWidth" display-name-key="Full width" description-key="Full width">7</value>
+      <value name="threeQuartersWidth" display-name-key="Three quarters width" description-key="Three quarters width">8</value>
+      <value name="twoThirdsWidth" display-name-key="Two thirds width" description-key="Two thirds width">9</value>
+      <value name="oneHalfWidth" display-name-key="One half width" description-key="One half width">10</value>
+      <value name="oneThirdWidth" display-name-key="One third width" description-key="One third width">11</value>
+      <value name="oneQuarterWidth" display-name-key="One quarter width" description-key="One quarter width">12</value>
+    </property>
+
+    <!-- Input type -->   
+    <property name="inputType" display-name-key="Input Type" description-key="Choose input type based on the information required, for example, if you’re asking the user to enter a whole number and you want to bring up the numeric keypad on a mobile device. If you’re asking the user to enter a number that might include decimal places, leave this option unselected to default to text input." of-type="Enum" usage="input" required="false">
+      <value name="wholeNumber" display-name-key="Whole number" description-key="Whole number input only and brings up the numeric input">1</value>
+      <value name="mustBeANumber" display-name-key="Must be a number" description-key="Choose this option if the input must be a number, either a whole number or a decimal, but you do not need the numeric input as with whole number">2</value>
+    </property> 
+
+    <!-- Prefix -->
+    <property name="prefix" display-name-key="Prefix" description-key="Enter the prefix required." of-type="SingleLine.Text" usage="input" required="false"/>
+    <!-- Suffix -->
+    <property name="suffix" display-name-key="Suffix" description-key="Enter the suffix required." of-type="SingleLine.Text" usage="input" required="false"/>
+
+    <!-- Maximum or minimun input character length -->
+    <property name="maxInputLength" display-name-key="Max input length" description-key="The maximum length of characters allowed. If a fixed width option is selected for the input field, then that value is used as the maximum length" of-type="SingleLine.Text" usage="input" required="false"/>
+    <property name="minInputLength" display-name-key="Min input length" description-key="The minimum length of characters allowed." of-type="SingleLine.Text" usage="input" required="false"/>
+    
+    <!-- Lowest or highest bounds from number input -->
+    <property name="lowest" display-name-key="Lowest" description-key="Specify the lowest bound of the number input." of-type="SingleLine.Text" usage="input" required="false"/>
+    <property name="highest" display-name-key="Highest" description-key="Specify the highest bound of the number input." of-type="SingleLine.Text" usage="input" required="false"/>
+
+    <!-- Special characters -->
+    <property name="specialCharacters" display-name-key="Special characters" description-key="Only allow letters a to z, hyphens, spaces and apostrophes, or specify which characters are not allowed." of-type="Enum" usage="input" required="false">
+      <value name="onlyAllowStandardChars" display-name-key="Only allow standard characters" description-key="Only allow letters a to z, hyphens, spaces and apostrophes.">1</value>
+    </property>
+    <property name="specifyCharsNotAllowed" display-name-key="Specify characters not allowed" description-key="Specify characters that are not allowed, separated by commas, for example: !, £, @" of-type="SingleLine.Text" usage="input" required="false"/>
+    
+    <!-- Spellcheck -->
+    <property name="disableSpellcheck" display-name-key="Disable spellcheck" description-key="Sometimes, browsers will spellcheck the information a user puts into a text input. If a user enters something which is recognised as a spelling error, sighted users will see a red line under the word. If you are asking users for information which is not appropriate to spellcheck, like a reference number, name, email address or National Insurance number, disable the spellcheck." of-type="Enum" usage="input" required="false">
+      <value name="disableSpellcheck" display-name-key="Disable spellcheck" description-key="Disable Spellcheck">1</value>
+    </property>
+
+    <!-- Autocomplete -->
+    <property name="autocomplete" display-name-key="Autocomplete" description-key="Use the autocomplete attribute on text inputs to help users complete forms more quickly. Taking guidance from https://www.w3.org/TR/WCAG21/#input-purposes enter a value for autocomplete input purpose." of-type="SingleLine.Text" usage="input" required="false"/>
+
+    <!-- 
+      Property node's of-type attribute can be of-type-group attribute. 
+      Example:
+      <type-group name="numbers">
+        <type>Whole.None</type>
+        <type>Currency</type>
+        <type>FP</type>
+        <type>Decimal</type>
+      </type-group>
+      <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type-group="numbers" usage="bound" required="true" />
+    -->
+    <resources>
+      <code path="index.ts" order="1"/>
+      <css path="govuk-frontend-3.13.0.min.css" order="1" />
+      
+      <!-- UNCOMMENT TO ADD MORE RESOURCES
+      <css path="css/DateComponent.css" order="1" />
+      <resx path="strings/DateComponent.1033.resx" version="1.0.0" />
+      -->
+    </resources>
+    <!-- UNCOMMENT TO ENABLE THE SPECIFIED API
+    <feature-usage>
+      <uses-feature name="Device.captureAudio" required="true" />
+      <uses-feature name="Device.captureImage" required="true" />
+      <uses-feature name="Device.captureVideo" required="true" />
+      <uses-feature name="Device.getBarcodeValue" required="true" />
+      <uses-feature name="Device.getCurrentPosition" required="true" />
+      <uses-feature name="Device.pickFile" required="true" />
+      <uses-feature name="Utility" required="true" />
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
+    -->
+  </control>
+</manifest>

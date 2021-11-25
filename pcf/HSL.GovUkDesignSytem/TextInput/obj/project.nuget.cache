@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "BZjxhXQ4d+HKrrxaSEl3ml6GvScG48V1vTwKnbXWhEKVAnioYrSWZ24UPMx61xFXJnOZ0sgoIqsTPgiijxiq3g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\rfreeman\\source\\repos\\voatmp-textinput-1\\pcf\\HSL.GovUkDesignSytem\\TextInput\\DateComponent.pcfproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\rfreeman\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.0\\microsoft.netframework.referenceassemblies.1.0.0.nupkg.sha512",
+    "C:\\Users\\rfreeman\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net462\\1.0.0\\microsoft.netframework.referenceassemblies.net462.1.0.0.nupkg.sha512",
+    "C:\\Users\\rfreeman\\.nuget\\packages\\microsoft.powerapps.msbuild.pcf\\1.9.9\\microsoft.powerapps.msbuild.pcf.1.9.9.nupkg.sha512"
+  ],
+  "logs": []
+}
