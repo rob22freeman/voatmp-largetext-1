@@ -1,81 +1,29 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <manifest>
-  <control namespace="HSL.GovUkDesignSystem" constructor="LargeTextArea" version="0.0.1" display-name-key="HSL GUDS Large Text Area" description-key="Hitachi Solutions PCF implementation of GOV.UK Design System large Text Area Input." control-type="standard" >
-    <!--external-service-usage node declares whether this 3rd party PCF control is using external service or not, if yes, this control will be considered as premium and please also add the external domain it is using.
-    If it is not using any external service, please set the enabled="false" and DO NOT add any domain below. The "enabled" will be false by default.
-    Example1:
-      <external-service-usage enabled="true">
-        <domain>www.Microsoft.com</domain>
-      </external-service-usage>
-    Example2:
-      <external-service-usage enabled="false">
-      </external-service-usage>
-    -->
-    <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
+  <control namespace="HSL.GovUkDesignSystem" constructor="LargeTextArea" version="0.0.1" display-name-key="HSL GUDS Lareg Text Area" description-key="Hitachi Solutions PCF implementation of GOV.UK Design System large Text Area Input." control-type="standard" api-version="1.3.1">
     <property name="largeTextArea" display-name-key="largetextArea" description-key="largeTextArea" of-type="SingleLine.Text" usage="bound" required="true"/>
-    
     <property name="title" display-name-key="Title" description-key="What information do you intend to capture?" of-type="SingleLine.Text" usage="input" required="true"/>
     <property name="fieldIdentifierErrorMessage" display-name-key="Field error message" description-key="Provide error message specific text (eg [whatever it is])" of-type="SingleLine.Text" usage="input" required="true"/>
     <property name="hint" display-name-key="Hint" description-key="Use hint text for help that’s relevant to the majority of users, like how their information will be used, or where to find it." of-type="SingleLine.Text" usage="input" required="false"/>
-    
-    <!-- Unique identifier --> 
-    <property name="uniqueIdentifier" display-name-key="Unique identifier" description-key="Unique idenfier for this fields control on form. Unless same field is present more than once on the form, use the field logical name. Only use lowercase letters and underscores." of-type="SingleLine.Text" usage="input" required="true" />
-
-    <!-- Disable page heading -->
+    <property name="uniqueIdentifier" display-name-key="Unique identifier" description-key="Unique idenfier for this fields control on form. Unless same field is present more than once on the form, use the field logical name. Only use lowercase letters and underscores." of-type="SingleLine.Text" usage="input" required="true"/>
     <property name="disablePageHeading" display-name-key="Disable page heading" description-key="Select this option if you are asking more than one question on the page." of-type="Enum" usage="input" required="false">
       <value name="disablePageHeading" display-name-key="Disable page heading" description-key="Select this option if you are asking more than one question on the page.">1</value>
     </property>
-
-    <!-- Fixed or fluid width inputs -->
     <property name="textAreaSize" display-name-key="Text area size" description-key="Make the height of a textarea proportional to the amount of text you expect users to enter." of-type="SingleLine.Text" usage="input" required="false"/>
-
-    <!-- Input type -->   
     <property name="inputType" display-name-key="Input type" description-key="Choose input type based on the information required, for example, if you’re asking the user to enter a whole number and you want to bring up the numeric keypad on a mobile device. If you’re asking the user to enter a number that might include decimal places, leave this option unselected to default to text input." of-type="Enum" usage="input" required="false">
       <value name="wholeNumber" display-name-key="Whole number" description-key="Whole number input only and brings up the numeric input">1</value>
       <value name="mustBeANumber" display-name-key="Must be a number" description-key="Choose this option if the input must be a number, either a whole number or a decimal, but you do not need the numeric input as with whole number">2</value>
-    </property> 
-
-    <!-- Maximum or minimun input character length -->
+    </property>
     <property name="maxInputLength" display-name-key="Max input length" description-key="The maximum length of characters allowed. If a fixed width option is selected for the input field, then that value is used as the maximum length" of-type="SingleLine.Text" usage="input" required="false"/>
     <property name="minInputLength" display-name-key="Min input length" description-key="The minimum length of characters allowed." of-type="SingleLine.Text" usage="input" required="false"/>
-    
-    <!-- Special characters -->
     <property name="specialCharacters" display-name-key="Special characters" description-key="Only allow letters a to z, hyphens, spaces and apostrophes, or specify which characters are not allowed." of-type="Enum" usage="input" required="false">
       <value name="onlyAllowStandardChars" display-name-key="Only allow standard characters" description-key="Only allow letters a to z, hyphens, spaces and apostrophes.">1</value>
     </property>
     <property name="specifyCharsNotAllowed" display-name-key="Specify characters not allowed" description-key="Specify characters that are not allowed, separated by commas, for example: !, £, @" of-type="SingleLine.Text" usage="input" required="false"/>
-
-    <!-- 
-      Property node's of-type attribute can be of-type-group attribute. 
-      Example:
-      <type-group name="numbers">
-        <type>Whole.None</type>
-        <type>Currency</type>
-        <type>FP</type>
-        <type>Decimal</type>
-      </type-group>
-      <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type-group="numbers" usage="bound" required="true" />
-    -->
     <resources>
-      <code path="index.ts" order="1"/>
-      <css path="govuk-frontend-3.13.0.min.css" order="1" />
-      
-      <!-- UNCOMMENT TO ADD MORE RESOURCES
-      <css path="css/DateComponent.css" order="1" />
-      <resx path="strings/DateComponent.1033.resx" version="1.0.0" />
-      -->
+      <code path="bundle.js" order="1"/>
+      <css path="govuk-frontend-3.13.0.min.css" order="1"/>
     </resources>
-    <!-- UNCOMMENT TO ENABLE THE SPECIFIED API
-    <feature-usage>
-      <uses-feature name="Device.captureAudio" required="true" />
-      <uses-feature name="Device.captureImage" required="true" />
-      <uses-feature name="Device.captureVideo" required="true" />
-      <uses-feature name="Device.getBarcodeValue" required="true" />
-      <uses-feature name="Device.getCurrentPosition" required="true" />
-      <uses-feature name="Device.pickFile" required="true" />
-      <uses-feature name="Utility" required="true" />
-      <uses-feature name="WebAPI" required="true" />
-    </feature-usage>
-    -->
+    <built-by name="pac" version="1.7.4"/>
   </control>
 </manifest>

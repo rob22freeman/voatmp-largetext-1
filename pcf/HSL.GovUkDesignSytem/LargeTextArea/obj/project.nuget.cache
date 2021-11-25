@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BZjxhXQ4d+HKrrxaSEl3ml6GvScG48V1vTwKnbXWhEKVAnioYrSWZ24UPMx61xFXJnOZ0sgoIqsTPgiijxiq3g==",
+  "dgSpecHash": "99tr2wmqcmFYT03CMVGzZL8UFaWOOvclRgefAI59jPOa6jbK18LBaK4gI0OnyvrPbOGoIunekhQu7aIc/MXICw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rfreeman\\source\\repos\\voatmp-textinput-1\\pcf\\HSL.GovUkDesignSytem\\TextInput\\DateComponent.pcfproj",
+  "projectFilePath": "C:\\Users\\rfreeman\\source\\repos\\voatmp-largetext-1\\pcf\\HSL.GovUkDesignSytem\\LargeTextArea\\DateComponent.pcfproj",
   "expectedPackageFiles": [
     "C:\\Users\\rfreeman\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.0\\microsoft.netframework.referenceassemblies.1.0.0.nupkg.sha512",
     "C:\\Users\\rfreeman\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net462\\1.0.0\\microsoft.netframework.referenceassemblies.net462.1.0.0.nupkg.sha512",

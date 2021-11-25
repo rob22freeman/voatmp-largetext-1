@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rfreeman\\source\\repos\\voatmp-textinput-1\\pcf\\HSL.GovUkDesignSytem\\TextInput\\DateComponent.pcfproj": {}
+    "C:\\Users\\rfreeman\\source\\repos\\voatmp-largetext-1\\pcf\\HSL.GovUkDesignSytem\\LargeTextArea\\DateComponent.pcfproj": {}
   },
   "projects": {
-    "C:\\Users\\rfreeman\\source\\repos\\voatmp-textinput-1\\pcf\\HSL.GovUkDesignSytem\\TextInput\\DateComponent.pcfproj": {
+    "C:\\Users\\rfreeman\\source\\repos\\voatmp-largetext-1\\pcf\\HSL.GovUkDesignSytem\\LargeTextArea\\DateComponent.pcfproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rfreeman\\source\\repos\\voatmp-textinput-1\\pcf\\HSL.GovUkDesignSytem\\TextInput\\DateComponent.pcfproj",
+        "projectUniqueName": "C:\\Users\\rfreeman\\source\\repos\\voatmp-largetext-1\\pcf\\HSL.GovUkDesignSytem\\LargeTextArea\\DateComponent.pcfproj",
         "projectName": "DateComponent",
-        "projectPath": "C:\\Users\\rfreeman\\source\\repos\\voatmp-textinput-1\\pcf\\HSL.GovUkDesignSytem\\TextInput\\DateComponent.pcfproj",
+        "projectPath": "C:\\Users\\rfreeman\\source\\repos\\voatmp-largetext-1\\pcf\\HSL.GovUkDesignSytem\\LargeTextArea\\DateComponent.pcfproj",
         "packagesPath": "C:\\Users\\rfreeman\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rfreeman\\source\\repos\\voatmp-textinput-1\\pcf\\HSL.GovUkDesignSytem\\TextInput\\obj\\",
+        "outputPath": "C:\\Users\\rfreeman\\source\\repos\\voatmp-largetext-1\\pcf\\HSL.GovUkDesignSytem\\LargeTextArea\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\rfreeman\\AppData\\Roaming\\NuGet\\NuGet.Config"

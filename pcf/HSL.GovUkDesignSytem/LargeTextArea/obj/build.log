@@ -1,41 +1,42 @@
 ﻿  Determining projects to restore...
-  All projects are up-to-date for restore.
+  Restored C:\Users\rfreeman\source\repos\voatmp-largetext-1\pcf\HSL.GovUkDesignSytem\LargeTextArea\DateComponent.pcfproj (in 1.19 sec).
+  Restored C:\Users\rfreeman\source\repos\voatmp-largetext-1\pcf\HSL.GovUkDesignSytem\LargeTextArea\obj\PowerAppsTools_hsl\PowerAppsTools_hsl.cdsproj (in 1.27 sec).
   
-  > pcf-project@1.0.0 clean C:\Users\rfreeman\source\repos\voatmp-textinput-1\pcf\HSL.GovUkDesignSytem\TextInput
-  > pcf-scripts clean "--noColor" "--buildMode" "development" "--outDir" "C:\Users\rfreeman\source\repos\voatmp-textinput-1\pcf\HSL.GovUkDesignSytem\TextInput\out\controls" "--buildSource" "MSBuild"
+  > pcf-project@1.0.0 clean C:\Users\rfreeman\source\repos\voatmp-largetext-1\pcf\HSL.GovUkDesignSytem\LargeTextArea
+  > pcf-scripts clean "--noColor" "--buildMode" "development" "--outDir" "C:\Users\rfreeman\source\repos\voatmp-largetext-1\pcf\HSL.GovUkDesignSytem\LargeTextArea\out\controls" "--buildSource" "MSBuild"
   
-  [11:00:42] [clean]  Initializing...
-  [11:00:42] [clean]  Cleaning build outputs...
-  [11:00:43] [clean]  Succeeded
+  [15:11:24] [clean]  Initializing...
+  [15:11:24] [clean]  Cleaning build outputs...
+  [15:11:24] [clean]  Succeeded
   Cleaning output directory: bin\Debug\, Intermediate directory: obj\Debug\ and Solution Packager working directory: obj\Debug\
   Removing log file: bin\Debug\SolutionPackager.log and generated solution package: bin\Debug\PowerAppsTools_hsl.zip
   
-  > pcf-project@1.0.0 build C:\Users\rfreeman\source\repos\voatmp-textinput-1\pcf\HSL.GovUkDesignSytem\TextInput
-  > pcf-scripts build "--noColor" "--buildMode" "development" "--outDir" "C:\Users\rfreeman\source\repos\voatmp-textinput-1\pcf\HSL.GovUkDesignSytem\TextInput\out\controls" "--buildSource" "MSBuild"
+  > pcf-project@1.0.0 build C:\Users\rfreeman\source\repos\voatmp-largetext-1\pcf\HSL.GovUkDesignSytem\LargeTextArea
+  > pcf-scripts build "--noColor" "--buildMode" "development" "--outDir" "C:\Users\rfreeman\source\repos\voatmp-largetext-1\pcf\HSL.GovUkDesignSytem\LargeTextArea\out\controls" "--buildSource" "MSBuild"
   
-  [11:00:45] [build]  Initializing...
-  [11:00:45] [build]  Validating manifest...
-  [11:00:45] [build]  Validating control...
-  [11:00:47] [build]  Generating manifest types...
-  [11:00:47] [build]  Generating design types...
-  [11:00:47] [build]  Compiling and bundling control...
+  [15:11:27] [build]  Initializing...
+  [15:11:27] [build]  Validating manifest...
+  [15:11:27] [build]  Validating control...
+  [15:11:29] [build]  Generating manifest types...
+  [15:11:29] [build]  Generating design types...
+  [15:11:29] [build]  Compiling and bundling control...
   [Webpack stats]:
-  Hash: 996f4625eccb2640fd75
+  Hash: ad73767303bb9e2bf07c
   Version: webpack 4.42.1
-  Time: 3083ms
-  Built at: 25/11/2021 11:00:50
+  Time: 3538ms
+  Built at: 25/11/2021 15:11:33
       Asset     Size  Chunks             Chunk Names
-  bundle.js  420 KiB    main  [emitted]  main
+  bundle.js  402 KiB    main  [emitted]  main
   Entrypoint main = bundle.js
-  [./TextInput/index.ts] 41.7 KiB {main} [built]
+  [./LargeTextArea/index.ts] 24.5 KiB {main} [built]
   [./node_modules/govuk-frontend/govuk/all.js] 91.5 KiB {main} [built]
   [./node_modules/nunjucks/browser/nunjucks.js] 252 KiB {main} [built]
   [./node_modules/process/browser.js] 4.96 KiB {main} [built]
   [./node_modules/setimmediate/setImmediate.js] 5.81 KiB {main} [built]
   [./node_modules/timers-browserify/main.js] 1.85 KiB {main} [built]
   [./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 475 bytes {main} [built]
-  [11:00:50] [build]  Generating build outputs...
-  [11:00:50] [build]  Succeeded
+  [15:11:33] [build]  Generating build outputs...
+  [15:11:33] [build]  Succeeded
   Running Solution Packager to build package type: Unmanaged bin\Debug\PowerAppsTools_hsl.zip
   Solution: bin\Debug\PowerAppsTools_hsl.zip generated.
   Solution Package Type: Unmanaged generated.
