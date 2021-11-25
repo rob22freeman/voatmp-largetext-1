@@ -56,10 +56,6 @@
 		private _autocomplete: string | undefined;
 		private _autocompleteEnabled: string | undefined;
 
-		// Configuration for prefix and/or suffix
-		private _prefix: string | undefined;
-		private _suffix: string | undefined;
-
 		// Configuration for max or min character input length
 		private _maxInputLength: string | undefined;
 		private _minInputLength: string | undefined;
@@ -76,7 +72,6 @@
 		private _formGroupDiv: HTMLDivElement;
 		private _titleDiv: HTMLLabelElement;
 		private _hintDiv: HTMLDivElement;
-		private _textInputDiv: HTMLDivElement;
 		
 		// Text input field
 		private _textInput: HTMLInputElement;
@@ -142,7 +137,6 @@
 			this.fixedAndFluidWidthInputs();
 			this.disablePageHeading(this._title);
 			this.inputType();
-			this.prefixSuffix();
 			this._spellcheck = this.disableSpellcheck();
 			this.autocomplete();
 
@@ -175,7 +169,6 @@
 			this._formGroupDiv = document.getElementsByClassName("govuk-form-group")[0] as HTMLDivElement;
 			this._titleDiv = document.getElementsByTagName("label")[0] as HTMLLabelElement
 			this._hintDiv = document.getElementById(this._hintId) as HTMLDivElement;
-			this._textInputDiv = document.getElementsByClassName("govuk-input " + this._fixedAndFluidWidthInputsClass)[0] as HTMLDivElement;
 
 			this._textInput = document.getElementById(this._textInputId) as HTMLInputElement;
 			this._textInput.addEventListener("change", this._refreshData);
@@ -309,8 +302,6 @@
 			isInputValid &&= this.handleIfInputIsTooShort(fieldIdentifier);
 			isInputValid &&= this.handleIfSpecifiedCharactersAreNotAllowed(fieldIdentifier);
 			isInputValid &&= this.handleIfOnlyStandardCharactersAreAllowed(fieldIdentifier);
-			isInputValid &&= this.handleIfInputIsNotAWholeNumber(fieldIdentifier);
-			isInputValid &&= this.handleIfInputIsNotANumber(fieldIdentifier);
 			isInputValid &&= this.handleIfInputMustBeBetweenTwoNumbers(fieldIdentifier);
 			isInputValid &&= this.handleIfInputIsTooLow(fieldIdentifier);
 			isInputValid &&= this.handleIfInputIsTooHigh(fieldIdentifier);
@@ -604,89 +595,6 @@
 
 		/**
 		 * ERROR VALIDATION: 
-		 * Handle if the input is not a whole number. Say '[whatever it is] must be a whole number', 
-		 * for example, 'Hours worked in a week must be a whole number'.
-		 * @param fieldIdentifier {string} Indentify the name of the field to display in the error messages
-		 * @returns {boolean} Return true if nothing has been entered, otherwise false;
-		 * @private
-		 */
-		private handleIfInputIsNotAWholeNumber (fieldIdentifier: string): boolean {
-
-			this._wholeNumber = (!this._context.parameters.inputType.raw) ? false : this._context.parameters.inputType.raw == "1";
-			this._prefix = this._context.parameters.prefix.raw = "£";
-
-			if (!this._wholeNumber) {
-				return true;
-			}
-
-			let inputText = this._textInput.value;
-			const numbers = /^[0-9]+$/;
-			const mustBeAWholeNumber = !inputText.match(numbers);
-
-			if (mustBeAWholeNumber) {
-
-				// If a prefix is selected and it's value equals "£", validate input based on guidance from GOVUK Design System:
-				// "If the input is amount of money that must not have decimals". https://design-system.service.gov.uk/components/text-input/
-				// Otherwise, evaluate as per the guidance at the start of this method.
-				if (!this._prefix) {
-
-					this.ShowError(this.firstCharUpperCase(fieldIdentifier) + " must be a whole number");
-					this._errorFocusId = this._textInputId;
-
-				} else {
-
-					this.ShowError(this.firstCharUpperCase(fieldIdentifier) + " must be a whole number and not include pence, like 123 or 156");
-					this._errorFocusId = this._textInputId;
-				}
-			}
-
-			return !mustBeAWholeNumber;
-		}
-
-		/**
-		 * ERROR VALIDATION: 
-		 * Handle if the input is not a number, including decimals. Say '[whatever it is] must be a number', 
-		 * for example, 'Hours worked in a week must be a number'. If the input requires a decimal, use a decimal in the example. 
-		 * If the input allows both whole numbers and decimals, use both in the example.
-		 * @param fieldIdentifier {string} Indentify the name of the field to display in the error messages
-		 * @returns {boolean} Return true if nothing has been entered, otherwise false;
-		 * @private
-		 */
-		 private handleIfInputIsNotANumber (fieldIdentifier: string): boolean {
-			
-			this._mustBeANumber = (!this._context.parameters.inputType.raw) ? false : this._context.parameters.inputType.raw == "2";
-			this._prefix = this._context.parameters.prefix.raw = "£";
-
-			if (!this._mustBeANumber) {
-				return true;
-			}
-
-			let inputText = this._textInput.value;
-			const decimals = /^[.0-9]+$/
-			const mustBeANumber = !inputText.match(decimals);
-
-			if (mustBeANumber) {
-
-				// If a prefix is selected and it's value equals "£", validate input based on guidance from GOVUK Design System:
-				// "If the input is amount of money that needs decimals". https://design-system.service.gov.uk/components/text-input/
-				// Otherwise, evaluate as per the guidance at the start of this method.
-				if (!this._prefix) {
-				
-					this.ShowError(this.firstCharUpperCase(fieldIdentifier) + " must be a number");
-					this._errorFocusId = this._textInputId;	
-
-				} else {
-
-					this.ShowError(this.firstCharUpperCase(fieldIdentifier) + " must be a number and include pence, like 123.45 or 156.00");
-					this._errorFocusId = this._textInputId;
-				}
-			}
-
-			return !mustBeANumber;
-		}
-
-		/**
-		 * ERROR VALIDATION: 
 		 * Handle if the input must be between 2 numbers. Say ‘[whatever it is] must be between [lowest] and [highest]’.
 		 * For example, ‘Hours worked a week must be between 16 and 99’. Set the lower and higher bounds via the Control Manifest.
 		 * @param fieldIdentifier {string} Indentify the name of the field to display in the error messages
@@ -947,30 +855,6 @@
 			} else {
 
 				return true;
-			}
-		};
-
-		/**
-		 * COMPONENT CONFIGURATION:
-		 * Use prefixes and suffixes to help users enter things like currencies and measurements.
-		 * https://design-system.service.gov.uk/components/text-input/
-		 * @returns {string} Returns the prefix or suffix entered in the form configuration and renders in the control.
-		 */
-		private prefixSuffix () {
-			
-			this._prefix = this._context.parameters.prefix.raw as string;
-			this._suffix = this._context.parameters.suffix.raw as string;
-
-			// prefix
-			if (this._prefix !== undefined) {
-
-				return this._prefix;
-			}
-
-			// suffix
-			if (this._suffix !== undefined) {
-
-				return this._suffix;
 			}
 		};
 
