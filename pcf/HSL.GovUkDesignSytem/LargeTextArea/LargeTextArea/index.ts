@@ -5,7 +5,7 @@
 	import { parse } from "path";
 	import { Context } from "vm";
 
-	export class largeTextArea implements ComponentFramework.StandardControl<IInputs, IOutputs> {
+	export class LargeTextArea implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 	
 		// Value of the column is stored and used inside the component
 		private _value: string | null;
@@ -27,34 +27,9 @@
 		private _disablePageHeadingIsTrue: boolean;
 		private _disablePageHeading: any;
 
-		// Configuration options for width of input box
-		private _fixedAndFluidWidthInputsClass: string;
-		private _characterWidth2: boolean;
-		private _characterWidth3: boolean;
-		private _characterWidth4: boolean;
-		private _characterWidth5: boolean;
-		private _characterWidth10: boolean;
-		private _characterWidth20: boolean;
-		private _fullWidth: boolean;
-		private _threeQuartersWidth: boolean;
-		private _twoThirdsWidth: boolean;
-		private _oneHalfWidth: boolean;
-		private _oneThirdWidth: boolean;
-		private _oneQuarterWidth: boolean;
-
-		// Configuration option for input type
-		private _wholeNumber: boolean;
-		private _mustBeANumber: boolean;
-		private _inputmode: string;
-		private _pattern: string;
-
-		// Configuration options for spellcheck (on or off)
-		private _spellcheck: boolean;
-		private _disableSpellcheck: boolean;
-
-		// Configuration for autocomplete
-		private _autocomplete: string | undefined;
-		private _autocompleteEnabled: string | undefined;
+		// Configuration options for size of input box
+		private _textAreaSizeDefined: string | undefined;
+		private _textAreaSize: string | undefined;
 
 		// Configuration for max or min character input length
 		private _maxInputLength: string | undefined;
@@ -130,11 +105,8 @@
 			this._containerLabel = this._uniqueIdentifier + "_Container";
 
 			// Configuration methods
-			this.fixedAndFluidWidthInputs();
+			this.textAreaSize();
 			this.disablePageHeading(this._title);
-			this.inputType();
-			this._spellcheck = this.disableSpellcheck();
-			this.autocomplete();
 
 			//Configure and render Nunjucks templates
 			require('govuk-frontend');
@@ -146,7 +118,7 @@
 			const renderedNunjucksTemplate = env.render('/textarea/template.njk',{params:{
 				name: this._uniqueIdentifier,
 				id: this._uniqueIdentifier,
-				rows: "8",
+				rows: this._textAreaSize,
 				label: this._disablePageHeading,
 				hint: {
 				  text: this._hint
@@ -383,29 +355,10 @@
 		 */
 		private handleIfInputIsTooLong (fieldIdentifier: string): boolean {
 
-			this._characterWidth2 = this._context.parameters.fixedAndFluidWidthInputs.raw == "1";
-			this._characterWidth3 = this._context.parameters.fixedAndFluidWidthInputs.raw == "2";
-			this._characterWidth4 = this._context.parameters.fixedAndFluidWidthInputs.raw == "3";
-			this._characterWidth5 = this._context.parameters.fixedAndFluidWidthInputs.raw == "4";
-			this._characterWidth10 = this._context.parameters.fixedAndFluidWidthInputs.raw == "5";
-			this._characterWidth20 = this._context.parameters.fixedAndFluidWidthInputs.raw == "6";
 			this._maxInputLength = (this._context.parameters.maxInputLength.raw == undefined) ? undefined : this._context.parameters.maxInputLength.raw;
+			let maxInputLengthValue: any = this._maxInputLength;
 
-			// Set the max character length of the input field to fixed character width if selected, for example:
-			// if "2 character width" is chosen, set the max character length to 2, or use the value of the 
-			// "Max input length" setting if one has been defined, otherwise return undefined.
-			let maxInputLengthValue = 
-			(
-				(this._characterWidth2) ? 2 : 
-				(this._characterWidth3) ? 3 :
-				(this._characterWidth4) ? 4 :
-				(this._characterWidth5) ? 5 :
-				(this._characterWidth10) ? 10 :
-				(this._characterWidth20) ? 20 :
-				this._maxInputLength
-			);
-
-			if (!maxInputLengthValue) {
+			if (maxInputLengthValue == undefined) {
 				return true;
 			}
 
@@ -433,14 +386,14 @@
 		private handleIfInputIsTooShort (fieldIdentifier: string): boolean {
 
 			this._minInputLength = (this._context.parameters.minInputLength.raw == undefined) ? undefined : this._context.parameters.minInputLength.raw;
-			let minInputLengthValue = this._minInputLength;	
+			let minInputLengthValue: any = this._minInputLength;	
 
 			if (minInputLengthValue == undefined) {
 				return true;
 			}
 
 			let inputText = this._textInput.value;
-			let isInputTooShort = (minInputLengthValue != undefined) ? (inputText.length < parseInt(minInputLengthValue) ? true : false) : false;
+			let isInputTooShort = (minInputLengthValue != undefined) ? (inputText.length < minInputLengthValue ? true : false) : false;
 
 			if (isInputTooShort) {
 
@@ -462,29 +415,10 @@
 		 */
 		 private handleIfInputHasBothMinAndMaxLength (fieldIdentifier: string): boolean {
 
-			this._characterWidth2 = this._context.parameters.fixedAndFluidWidthInputs.raw == "1";
-			this._characterWidth3 = this._context.parameters.fixedAndFluidWidthInputs.raw == "2";
-			this._characterWidth4 = this._context.parameters.fixedAndFluidWidthInputs.raw == "3";
-			this._characterWidth5 = this._context.parameters.fixedAndFluidWidthInputs.raw == "4";
-			this._characterWidth10 = this._context.parameters.fixedAndFluidWidthInputs.raw == "5";
-			this._characterWidth20 = this._context.parameters.fixedAndFluidWidthInputs.raw == "6";
 			this._maxInputLength = (this._context.parameters.maxInputLength.raw == undefined) ? undefined : this._context.parameters.maxInputLength.raw;
 			this._minInputLength = (this._context.parameters.minInputLength.raw == undefined) ? undefined : this._context.parameters.minInputLength.raw;
 
-			// Set the max character length of the input field to fixed character width if selected, for example:
-			// if "2 character width" is chosen, set the max character length to 2, or use the value of the 
-			// "Max input length" setting if one has been defined, otherwise return undefined.
-			let maxInputLengthValue: any = 
-			(
-				(this._characterWidth2) ? 2 : 
-				(this._characterWidth3) ? 3 :
-				(this._characterWidth4) ? 4 :
-				(this._characterWidth5) ? 5 :
-				(this._characterWidth10) ? 10 :
-				(this._characterWidth20) ? 20 :
-				this._maxInputLength
-			);
-
+			let maxInputLengthValue: any = this._maxInputLength;
 			let minInputLengthValue: any = this._minInputLength;
 			
 			let inputText = this._textInput.value;
@@ -591,7 +525,7 @@
 		/**
 		 * COMPONENT CONFIGURATION:
 		 * Following guidance from GOV UK Design System: "if you're asking more than one question on the page, do not set the
-		 * contents of <label> as the page heading." https://design-system.service.gov.uk/components/text-input/
+		 * contents of <label> as the page heading." https://design-system.service.gov.uk/components/textarea/
 		 * @param title {string} What information do you intend to capture?
 		 * @returns {any} Returns control title only if true, or title plus page heading config if false.
 		 * @private
@@ -613,161 +547,20 @@
 		
 		/**
 		 * COMPONENT CONFIGURATION:
-		 * Configure the size of the text input box based on the selected option for "Fixed and fluid width inputs".
-		 * If no option is selected, the default configuration is "full width", as dictated by the GOVUK Design System:
-		 * "By default, the width of text inputs is fluid and will fit the full width of the container they are placed into." 
-		 * https://design-system.service.gov.uk/components/text-input/
+		 * Configure the size of the text input box if necessary, following guidance from GOVUK Design System: 
+		 * Make the height of a textarea proportional to the amount of text you expect users to enter. 
+		 * You can set the height of a textarea by by specifying the rows attribute. 
+		 * https://design-system.service.gov.uk/components/textarea/
 		 */
-		private fixedAndFluidWidthInputs () {
+		private textAreaSize () {
 
-			// selected options for Control Manifest: "Fixed and fluid width inputs"
-			this._characterWidth2 = this._context.parameters.fixedAndFluidWidthInputs.raw == "1";
-			this._characterWidth3 = this._context.parameters.fixedAndFluidWidthInputs.raw == "2";
-			this._characterWidth4 = this._context.parameters.fixedAndFluidWidthInputs.raw == "3";
-			this._characterWidth5 = this._context.parameters.fixedAndFluidWidthInputs.raw == "4";
-			this._characterWidth10 = this._context.parameters.fixedAndFluidWidthInputs.raw == "5";
-			this._characterWidth20 = this._context.parameters.fixedAndFluidWidthInputs.raw == "6";
-			this._fullWidth = this._context.parameters.fixedAndFluidWidthInputs.raw == "7";
-			this._threeQuartersWidth = this._context.parameters.fixedAndFluidWidthInputs.raw == "8";
-			this._twoThirdsWidth = this._context.parameters.fixedAndFluidWidthInputs.raw == "9";
-			this._oneHalfWidth = this._context.parameters.fixedAndFluidWidthInputs.raw == "10";
-			this._oneThirdWidth = this._context.parameters.fixedAndFluidWidthInputs.raw == "11";
-			this._oneQuarterWidth = this._context.parameters.fixedAndFluidWidthInputs.raw == "12";
+			this._textAreaSizeDefined = (this._context.parameters.textAreaSize.raw == undefined) ? undefined : this._context.parameters.textAreaSize.raw;
 
-			// 2 character width
-			if (this._characterWidth2) {
-				this._fixedAndFluidWidthInputsClass = "govuk-input--width-2";
-			} 
+			if (this._textAreaSizeDefined != undefined) {
 
-			// 3 character width
-			else if (this._characterWidth3) {
-				this._fixedAndFluidWidthInputsClass = "govuk-input--width-3";
+				return this._textAreaSize = this._textAreaSizeDefined;
 			}
-
-			// 4 character width
-			else if (this._characterWidth4) {
-				this._fixedAndFluidWidthInputsClass = "govuk-input--width-4";
-			}
-
-			// 5 character width
-			else if (this._characterWidth5) {
-				this._fixedAndFluidWidthInputsClass = "govuk-input--width-5";
-			}
-
-			// 10 character width
-			else if (this._characterWidth10) {
-				this._fixedAndFluidWidthInputsClass = "govuk-input--width-10";
-			}
-
-			// 20 character width
-			else if (this._characterWidth20) {
-				this._fixedAndFluidWidthInputsClass = "govuk-input--width-20";
-			}
-
-			// full width
-			else if (this._fullWidth) {
-				this._fixedAndFluidWidthInputsClass = "govuk-!-width-full";
-			}
-
-			// three quarters width
-			else if (this._threeQuartersWidth) {
-				this._fixedAndFluidWidthInputsClass = "govuk-!-width-three-quarters";
-			}
-
-			// two thirds width
-			else if (this._twoThirdsWidth) {
-				this._fixedAndFluidWidthInputsClass = "govuk-!-width-two-thirds";
-			}
-
-			// one half width
-			else if (this._oneHalfWidth) {
-				this._fixedAndFluidWidthInputsClass = "govuk-!-width-one-half";
-			}
-
-			// one third width
-			else if (this._oneThirdWidth) {
-				this._fixedAndFluidWidthInputsClass = "govuk-!-width-one-third";
-			}
-
-			// one quarter width
-			else if (this._oneQuarterWidth) {
-				this._fixedAndFluidWidthInputsClass = "govuk-!-width-one-quarter";
-			}
-			
-			// default full width: "By default, the width of text inputs is fluid and will fit the full width 
-			// of the container they are placed into." https://design-system.service.gov.uk/components/text-input/
-			else {
-				this._fixedAndFluidWidthInputsClass = "govuk-!-width-full";
-			}
-		};
-
-		/**
-		 * COMPONENT CONFIGURATION:
-		 * If you’re asking the user to enter a whole number and you want to bring up the numeric keypad on a mobile device, 
-		 * set the inputmode attribute to numeric and the pattern attribute to [0-9]*.
-		 * If you’re asking the user to enter a number that might include decimal places, use input type="text" without inputmode or pattern attributes.
-		 * Do not set the inputmode attribute to decimal as it causes some devices to bring up a keypad without a key for the decimal separator.
-		 * https://design-system.service.gov.uk/components/text-input/
-		 * 
-		 */
-		private inputType () {
-
-			// selected option for Control Manifest: "Input Type"
-			this._wholeNumber = this._context.parameters.inputType.raw == "1";
-
-			if (this._wholeNumber) {
-
-				this._inputmode = "numeric", 
-				this._pattern = "[0-9]*"
-			}
-
-			// Set the default values to "", unless the whole number option is selected in the configuration			
-			else {
-
-				this._inputmode = "";
-				this._pattern = "";
-			}
-		};
-
-		/**
-		 * COMPONENT CONFIGURATION:
-		 * Following guidance from the GOVUK Design System, there are occasions where spellcheck should be disabled:
-		 * "If you are asking users for information which is not appropriate to spellcheck, like a reference number, name, email address 
-		 * or National Insurance number, disable the spellcheck."
-		 * https://design-system.service.gov.uk/components/text-input/
-		 * By default, the component will have spellcheck enabled.
-		 */
-		private disableSpellcheck () {
-
-			this._disableSpellcheck = this._context.parameters.disableSpellcheck.raw == "1";
-
-			if (this._disableSpellcheck) {
-
-				return false;
-			} else {
-
-				return true;
-			}
-		};
-
-		/**
-		 * COMPONENT CONFIGURATION:
-		 * Following guidance from GOV UK Design System: "Use the autocomplete attribute on text inputs to help users complete forms more quickly. 
-		 * This lets you specify an input’s purpose so browsers can autofill the information on a user’s behalf if they’ve entered it previously.
-		 * For example, to enable autofill on a postcode field, set the autocomplete attribute to postal-code. https://design-system.service.gov.uk/components/text-input/
-		 * See guidance on input purposes: https://www.w3.org/TR/WCAG21/#input-purposes 
-		 * @returns {any} Adds autocomplete attribute to control render true.
-		 * @private
-		 */
-		 private autocomplete () {
-
-			this._autocompleteEnabled = (this._context.parameters.autocomplete.raw == undefined) ? undefined : this._context.parameters.autocomplete.raw;
-
-			if (this._autocompleteEnabled != undefined) {
-
-				return this._autocomplete = this._context.parameters.autocomplete.raw as any;
-			} 
-		};
+		}
 
 		/**
 		 * Called when any value in the property bag has changed. This includes field values, data-sets, global values such as container height and width, offline status, control metadata values such as label, visible, etc.
@@ -776,7 +569,7 @@
 		public updateView(context: ComponentFramework.Context<IInputs>): void {	
 			
 		// storing the latest context from the control.
-		this._value = context.parameters.textInput.raw;
+		this._value = context.parameters.largeTextArea.raw;
 	  	this._context = context;
 			
 			if (this._value) {
@@ -797,7 +590,7 @@
 			// Send the currently selected options back to the ComponentFramework
 			return {
 
-				textInput: (this._value === null ? undefined : this._value)
+				largeTextArea: (this._value === null ? undefined : this._value)
 			};
 		}
 	
@@ -810,7 +603,7 @@
 			// no-op: method not leveraged by this example custom control
 		}
 
-		private registerPCFComponent(currentInstance:largeTextArea) : void {
+		private registerPCFComponent(currentInstance:LargeTextArea) : void {
 			
 			let globalScope = (window as any);
 			
